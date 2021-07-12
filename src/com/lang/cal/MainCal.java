@@ -27,7 +27,7 @@ public class MainCal {
           break;
         case "3":
           cal.mainCal();
-        case "quit":
+        case "q":
           break menuLoop;
         default:
           System.out.println("메뉴 번호가 옳지 않습니다.");
