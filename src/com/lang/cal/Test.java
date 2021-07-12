@@ -6,12 +6,11 @@ import java.util.Scanner;
 public class Test {
 
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
     Scanner sc = new Scanner(System.in);
 
-    System.out.println("년도 입력 : ");
+    System.out.print("년도 입력 : ");
     int year = Integer.parseInt(sc.nextLine());
-    System.out.println("월 입력 : ");
+    System.out.print("월 입력 : ");
     int month = Integer.parseInt(sc.nextLine());        
     int START_DAY_OF_WEEK = 0;
     int END_DAY = 0;
