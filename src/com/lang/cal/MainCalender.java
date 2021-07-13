@@ -7,8 +7,6 @@ public class MainCalender {
   static char[] weeks = {'일', '월', '화', '수', '목', '금', '토'};
   static int [][] days = {{ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, // 평년
                           { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}}; // 윤년
-  static String [][] cals = {{ "\t, \t, \t, \t, \t, \t, \t, \t, \t, \t, \t, \t"}, // 평년
-                          { "\t, \t, \t, \t, \t, \t, \t, \t, \t, \t, \t, \t"}}; // 윤년
   
   static int isLeap(int year) {
     return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) ? 1 : 0 ;
@@ -35,6 +33,8 @@ public class MainCalender {
     int yridx = isLeap(year);
     int lastday = days[yridx][month - 1];
     int Firstweek = fristDayWeek(year,month);
+    String [][][] arr = new String[1101][12][lastday];
+    System.out.println(yridx);
     
     System.out.printf(
         "년도 : %d   월 : %d\t %s\t 첫 요일 위치 : %d (일:0 월:1 화:2 수:3 목:4 금:5 토:6) \n",
@@ -49,10 +49,13 @@ public class MainCalender {
     }
     
     for(int i = 1; i<= lastday; i++) {
-      System.out.printf("%d\t", i);
+      if(arr[year-1900][month][i-1] == null) {
+        System.out.printf("%d □\t", i);
+      } else {System.out.printf("%d ■\t", i);}
       if((Firstweek + i -1) % 7 == 6)
         System.out.println();
     }
+    
   }//e
   
   static void Scan_ERROR() {
@@ -60,7 +63,7 @@ public class MainCalender {
     System.exit(0);
   }//e
   
-  public static void main(String[] args) {
+  public void Scan_Insert() {
     int year = 0;
     int month = 0;
     

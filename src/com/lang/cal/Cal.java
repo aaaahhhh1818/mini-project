@@ -3,6 +3,7 @@ package com.lang.cal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
@@ -14,12 +15,13 @@ public class Cal {
      Connection CN = null;
      Statement ST = null; 
      ResultSet RS = null; 
+     PreparedStatement PST = null;
      Date DT = new Date();
      String msg = "isud = crud 쿼리문기술";
      String input = "";
      Scanner sc = new Scanner(System.in);
      int total = 0;
-
+     MainCalender MC = new MainCalender();
 
 
       
@@ -41,7 +43,7 @@ public class Cal {
         
         int sel = 0;
         while(true) {
-          System.out.println("\n1.입력  2.삭제  3.수정  4.전체조회 5.개별조회  0.종료");
+          System.out.println("\n1.입력  2.삭제  3.수정  4.전체조회 5.개별조회 6.달력조회  0.종료");
           sel = Integer.parseInt(sc.nextLine());
           if(sel==0) {
             System.out.println("DB프로그램 종료");
@@ -53,6 +55,7 @@ public class Cal {
             case 3 : update(); break;
             case 4 : AllList(); break;
             case 5 : view(); break;
+            case 6 : MC.Scan_Insert(); break;
             default : System.out.println("올바른 메뉴를 선택해 주세요.");
             break;
           }//switch end
@@ -63,6 +66,7 @@ public class Cal {
   }//커넥션 end
         
         public void add() throws Exception {
+          
 
       System.out.print("제목입력>>>");
       String title = sc.nextLine();
@@ -70,14 +74,20 @@ public class Cal {
       String contents = sc.nextLine();
       System.out.print("장소입력>>>");
       String location = sc.nextLine();
-      
+      System.out.print("일정입력>>>");
+      String dDate = sc.nextLine();
       
       msg = "insert into cal(Caltitle, Calcontents, Callocation, Caldate) "
-          + "values('"+ title +"', '"+ contents +"' ,'"+ location +"' ,  sysdate)";
+          + "values(?, ?, ?, TO_DATE('" + dDate + "','yyyy-MM-dd'))";
       
-      System.out.println(msg);
+      PST = CN.prepareStatement(msg);
+        PST.setString(1, title);
+        PST.setString(2, contents);
+        PST.setString(3, location);
       
-      int OK = ST.executeUpdate(msg);
+        System.out.println(msg);
+      
+      int OK = PST.executeUpdate();
       if (OK>0) {
         System.out.println("데이터 저장 성공");
       } else {
