@@ -29,11 +29,12 @@ public class MainCalender {
     return weeks % 7;
   }//e
   
-  static void Show_Calender(int year, int month) {
+  public static String [][][] arr = new String[1101][12][31];
+  public void Show_Calender(int year, int month) {
     int yridx = isLeap(year);
     int lastday = days[yridx][month - 1];
     int Firstweek = fristDayWeek(year,month);
-    String [][][] arr = new String[1101][12][lastday];
+    
     System.out.println(yridx);
     
     System.out.printf(
@@ -57,7 +58,7 @@ public class MainCalender {
     }
     
   }//e
-  
+
   static void Scan_ERROR() {
     System.out.printf("\n 올바른 값을 입력하세요");
     System.exit(0);

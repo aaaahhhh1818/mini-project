@@ -9,8 +9,7 @@ import java.sql.Statement;
 import java.util.Date;
 import java.util.Scanner;
 
-
-public class Cal {
+public class Cal extends MainCalender{
 
      Connection CN = null;
      Statement ST = null; 
@@ -67,6 +66,7 @@ public class Cal {
         
         public void add() throws Exception {
           
+          
 
       System.out.print("제목입력>>>");
       String title = sc.nextLine();
@@ -74,8 +74,13 @@ public class Cal {
       String contents = sc.nextLine();
       System.out.print("장소입력>>>");
       String location = sc.nextLine();
-      System.out.print("일정입력>>>");
+      System.out.print("일정입력(****.**.**)>>>");
       String dDate = sc.nextLine();
+      String[] dateArr = dDate.split("\\.");
+      int year = Integer.parseInt(dateArr[0]);
+      int month = Integer.parseInt(dateArr[1]);
+      int day = Integer.parseInt(dateArr[2]);
+      MainCalender.arr[year-1900][month][day-1] = title;
       
       msg = "insert into cal(Caltitle, Calcontents, Callocation, Caldate) "
           + "values(?, ?, ?, TO_DATE('" + dDate + "','yyyy-MM-dd'))";
