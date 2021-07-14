@@ -7,8 +7,10 @@ public class MainCal {
 
   static Scanner sc = new Scanner(System.in);
 
-  public static void main(String[] args) throws Exception {
-    MainCal cal = new MainCal();
+  public static void main(String[] args) {
+    //MainCal cal = new MainCal();
+    MainCalender MC = new MainCalender();
+    Cal cal = new Cal();
 
     menuLoop: while (true) {
       System.out.println("┌────────────────┐");  
@@ -21,11 +23,11 @@ public class MainCal {
       String menuNo = sc.nextLine();
 
       switch (menuNo) {
-        case "1":
-          break;
+        case "1": cal.connect();
+        break;
         case "2"://일기();
           break;
-        case "3": cal.mainCal(); break;
+        case "3": MC.Scan_Insert(); break;
         case "4": break menuLoop;
         default:
           System.out.println("\n메뉴 번호가 옳지 않습니다.\n다시 선택해주세요.");
@@ -45,17 +47,17 @@ public class MainCal {
     Calendar calEnd = Calendar.getInstance();
 
     calStart.set(year, month-1, 1);
-    calEnd.set(year, month,1);
+    calEnd.set(year, month, 1);
     calEnd.add(Calendar.DATE, -1);
 
     int LAST_DAY = calStart.get(Calendar.DAY_OF_WEEK);
     int WEEK = calEnd.get(Calendar.DATE);
 
     System.out.println();
-    System.out.println("[ " + year + "년 " + month + "월 ]");
-    System.out.println("───────────────────────────────────────────────────");
+    System.out.println("\t\t  [ " + year + "년 " + month + "월 ]");
+    System.out.println("─────────────────────────────────────────────────────");
     System.out.println("일\t월\t화\t수\t목\t금\t토 ");
-    System.out.println("───────────────────────────────────────────────────");
+    System.out.println("─────────────────────────────────────────────────────");
 
     for(int i = 1; i < LAST_DAY; i++) {
       System.out.print("\t");
@@ -63,7 +65,8 @@ public class MainCal {
 
     int date = LAST_DAY - 1;
     for(int i = 1; i <= WEEK; i++) {
-      System.out.print(i + "\t");
+
+      System.out.printf("%2d □\t", i);
       date++;
 
       if(date == 7) {
@@ -71,7 +74,7 @@ public class MainCal {
         System.out.println("\n");
       }
     }
-    sc.close();
+
   }
 
 
