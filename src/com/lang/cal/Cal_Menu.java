@@ -1,16 +1,17 @@
 package com.lang.cal;
 
 public class Cal_Menu {
-  Cal cl = new Cal();
+  CalFuntion cl = new CalFuntion();
   MainCalender MC = new MainCalender();
 
   void run() throws Exception {
     
   cl.connect();
+  cl.mainMenu();
   cl.add();
   cl.delete();
-  cl.AllList();
-  cl.view();
+  cl.allList();
+  cl.singleView();
   
   MC.Scan_Insert();
   
