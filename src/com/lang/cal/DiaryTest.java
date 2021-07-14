@@ -48,9 +48,9 @@ public void diaryMenu() {
 			case "2" :
 				diaryDelete();
 			break;
-//			case "3" :
-//				diaryUpdate();	
-//			break;
+			case "3" :
+				diaryUpdate();	
+			break;
 			case "4" :
 				diarySelect();
 			break;
@@ -67,7 +67,6 @@ public void diaryMenu() {
 
 public void diaryInsert () {
 	try {
-	//ST = CN.createStatement();
        
        //두번째 키보드에서 데이터 입력
       System.out.print("\n오늘 날짜>>>"); 
@@ -205,11 +204,7 @@ public void diaryUpdate() {
 	public static void main(String[] args) {
 		DiaryTest dt = new DiaryTest();
 		dt.diaryConnect();
-		dt.diaryInsert();
-		dt.diarySelect();
-		dt.diaryDelete();
-		dt.diaryUpdate();
-
+		dt.diaryMenu();
 	}//main end
 
 }//Class end
