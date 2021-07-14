@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class DiaryTest {
-<<<<<<< HEAD
 
   Connection CN=null; //DB서버연결정보 서버ip주소 계정id,pwd
   Statement ST=null;  //ST=CN.createStatement()명령어생성 삭제,신규등록,조회하라
@@ -69,69 +68,6 @@ public class DiaryTest {
     try {
 
       //두번째 키보드에서 데이터 입력
-=======
-	
-	Connection CN=null; //DB서버연결정보 서버ip주소 계정id,pwd
-	Statement ST=null;  //ST=CN.createStatement()명령어생성 삭제,신규등록,조회하라
-	ResultSet RS=null;  //select조회결과값 전체데이터를 기억합니다
-	PreparedStatement PST=null ;
-	String msg ="";
-	Scanner sc = new Scanner(System.in);
-	
-	String wdate; 
-	String weather; 
-	String feel; 
-	String contents; 
-	String wcomment;
-	
-	public void diaryConnect() {
-	      
-		try {   
-			Class.forName("oracle.jdbc.driver.OracleDriver"); //오라클드라이브로드
-			String url = "jdbc:oracle:thin:@175.210.92.176:1521:XE" ;
-			CN=DriverManager.getConnection(url,"hhwanseung","1234");
-			System.out.println("오라클 드라이브및 서버연결성공 ");
-			ST = CN.createStatement();
-
-	}catch (Exception e) { }
-	}//diaryConnect end
-	
-	public void diaryMenu() {
-		
-		System.out.println("<다이어리 메뉴>");
-		
-		loop: while(true) {
-			System.out.println("1.일기생성 2.일기삭제 3.일기수정 4.일기조회 9.종료");
-			String sel = sc.nextLine();
-			switch (sel) {
-			case "1" :
-				diaryInsert();
-			break;
-			case "2" :
-				diaryDelete();
-			break;
-			case "3" :
-				diaryUpdate();	
-			break;
-			case "4" :
-				diarySelect();
-			break;
-			
-			case "9" :
-				System.out.println("일기장 종료");
-				break loop;
-			default :
-				System.out.println("잘못된 입력입니다.");
-			break;
-			}//switch end
-		}//while end
-	}//diaryMenu end
-
-public void diaryInsert () {
-	try {
-       
-       //두번째 키보드에서 데이터 입력
->>>>>>> 9dd78c2b2d9f1c48a51615171b7fd8013f7c795e
       System.out.print("\n오늘 날짜>>>"); 
       wdate = sc.nextLine();
       System.out.print("날씨>>>"); 
