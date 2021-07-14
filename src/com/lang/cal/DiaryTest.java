@@ -34,7 +34,7 @@ public class DiaryTest {
 	}catch (Exception e) { }
 	}//diaryConnect end
 	
-public void diaryMenu() {
+	public void diaryMenu() {
 		
 		System.out.println("<다이어리 메뉴>");
 		
