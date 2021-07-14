@@ -13,20 +13,20 @@ public class MainCal {
     Cal cal = new Cal();
 
     menuLoop: while (true) {
-      System.out.println("┌────────────────┐");  
-      System.out.println("│ 1. 일정 등록   │");
-      System.out.println("│ 2. 일기 등록   │");
-      System.out.println("│ 3. 달력 보기   │");
-      System.out.println("│ 4. 종료        │");
-      System.out.println("└────────────────┘");
+      System.out.println("\n┌────────────────");  
+      System.out.println("│ 1. 일정 등록");
+      System.out.println("│ 2. 일기 등록");
+      System.out.println("│ 3. 달력 보기");
+      System.out.println("│ 4. 종료     ");
+      System.out.println("└────────────────");
       System.out.print("[선택] ");
       String menuNo = sc.nextLine();
 
       switch (menuNo) {
         case "1": cal.connect();
         break;
-        case "2"://일기();
-          break;
+        case "2": DiaryTest.main(args);
+        break;
         case "3": MC.Scan_Insert(); break;
         case "4": break menuLoop;
         default:
