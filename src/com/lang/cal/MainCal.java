@@ -7,7 +7,6 @@ public class MainCal {
   static Scanner sc = new Scanner(System.in);
 
   public static void main(String[] args) throws Exception {
-    MainCalender mcal = new MainCalender();
 
     menuLoop: while (true) {
       System.out.println("\n┌────────────────");  

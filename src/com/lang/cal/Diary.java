@@ -40,8 +40,6 @@ public class Diary {
   }//diaryConnect end
 
   public void diaryMenu() {
-    diaryConnect();
-
 
     loop: while(true) {
       System.out.println("\n[일기장 메뉴]");
