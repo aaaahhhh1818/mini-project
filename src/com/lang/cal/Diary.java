@@ -106,7 +106,7 @@ public class Diary {
   public void diaryList () {
     try {
       System.out.println("\n[일기장 목록]");
-      msg = "select * from  diary " ; //문자열을 명령어 인식해서 실행하도록 Statement
+      msg = "select wdate from diary order by wdate" ; //문자열을 명령어 인식해서 실행하도록 Statement
       RS = ST.executeQuery(msg);
 
       while(RS.next()==true) {
