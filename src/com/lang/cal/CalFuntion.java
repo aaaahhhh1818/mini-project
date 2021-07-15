@@ -164,7 +164,6 @@ public class CalFuntion extends SubFuntion{
         public void dateView() {
           int a;
           String year, month, day;
-          year = year.replaceAll(System.getProperty("line.separator"), " ");
           
           try {
             loop : 
