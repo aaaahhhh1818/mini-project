@@ -7,7 +7,8 @@ public class Diary_Menu {
 		da.diaryConnect();
 		da.diaryMenu();
 		da.diaryInsert();
-		da.diarySelect();
+		da.diaryList();
+		da.diaryView();
 		da.diaryDelete();
 		da.diaryUpdate();
 		

@@ -26,15 +26,15 @@ public class DiaryTest {
   public void diaryConnect() {
 
     try {   
-      Class.forName("oracle.jdbc.driver.OracleDriver");
-      String url = "jdbc:oracle:thin:@localhost:1521:XE";
-      CN =  DriverManager.getConnection(url, "system", "1234");
-      ST = CN.createStatement();
-      //      Class.forName("oracle.jdbc.driver.OracleDriver"); //오라클드라이브로드
-      //      String url = "jdbc:oracle:thin:@175.210.92.176:1521:XE" ;
-      //      CN=DriverManager.getConnection(url,"hhwanseung","1234");
-      //      System.out.println("오라클 드라이브및 서버연결성공 ");
-      //      ST = CN.createStatement();
+//      Class.forName("oracle.jdbc.driver.OracleDriver");
+//      String url = "jdbc:oracle:thin:@localhost:1521:XE";
+//      CN =  DriverManager.getConnection(url, "system", "1234");
+//      ST = CN.createStatement();
+            Class.forName("oracle.jdbc.driver.OracleDriver"); //오라클드라이브로드
+            String url = "jdbc:oracle:thin:@175.210.92.176:1521:XE" ;
+            CN=DriverManager.getConnection(url,"hhwanseung","1234");
+            System.out.println("오라클 드라이브및 서버연결성공 ");
+            ST = CN.createStatement();
 
     }catch (Exception e) { }
   }//diaryConnect end
