@@ -19,6 +19,8 @@ public class SubFuntion extends MainCalender{
   String msg = "isud = crud 쿼리문기술";
   String input = "";
   int total = 0;
+  int a;
+  String year, month, day;
   
   
   public void connect() {
@@ -59,5 +61,67 @@ public class SubFuntion extends MainCalender{
       }//try C end
   }//listIn end
   
+  public void dateYear() {
+    loop3:while(true) {
+      System.out.println("연>>>");
+    year = sc.nextLine();
+    if(year.equals("") || year==null) {
+      System.out.println("오류!\t네 자릿수의 연도를 입력 하세요.");
+      continue loop3;
+    } if(year.equals("back")) {
+      new CalFuntion().mainMenu();
+    } else { a = Integer.parseInt(year);
+    int length = (int)(Math.log10(a)+1);
+    if(length != 4) {
+      System.out.println("오류!\t네 자릿수의 연도를 입력 하세요.");
+      } else {break;}
+    }
+    }//year while end
+  }//dateYear end
+  
+  public void dateMonth() {
+  
+  loop4:while(true) {
+    System.out.println("월>>>");
+  month = sc.nextLine();
+  if(month.equals("") || month==null) {
+    System.out.println("오류!\t이 칸은 비울수 없습니다.");
+    continue loop4;
+  } if(month.equals("back")) {
+    new CalFuntion().mainMenu();
+  } else {
+    if(month.length()!=2) {
+      System.out.println("오류!\t두 자릿수로 월을 입력 하세요.");
+      continue loop4;
+    } else { 
+      a = Integer.parseInt(month);}//2else end
+  }//1else end
+  if(a < 1 || a > 12 ) {
+    System.out.println("오류!\t 1~12 월을 입력 하세요.");
+  } else {break loop4;}//3else end
+  } //month while end
+}//dateMonth end
+  
+  public void dateDay() {
+    loop6:while(true) {
+      System.out.println("일>>>");
+    day = sc.nextLine();
+    if(day.equals("") || day==null) {
+      System.out.println("오류!\t이 칸은 비울수 없습니다.");
+      continue loop6;
+    } if(day.equals("back")) {
+      new CalFuntion().mainMenu();
+    } else {
+      if(day.length()!=2) {
+        System.out.println("오류!\t두 자릿수로 일을 입력 하세요.");
+        continue loop6;
+      } else { 
+        a = Integer.parseInt(day);}//2else end
+    }//1else end
+    if(a < 1 || a > 31 ) {
+      System.out.println("오류!\t 1~31 일을 입력 하세요.");
+    } else {break loop6;}//3else end
+    } //day while end
+  }
 
 }//C end
