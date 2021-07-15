@@ -1,5 +1,6 @@
 package com.lang.cal;
 
+
 public class CalFuntion extends SubFuntion{
 
         public void mainMenu() {
@@ -18,7 +19,7 @@ public class CalFuntion extends SubFuntion{
             case 1 : add(); break;
             case 2 : delete(); break;
             case 3 : update(); break;
-            case 4 : dateView(); break;            
+            case 4 : dateView(); break;
             case 5 : allList(); break;
             case 6 : singleView(); break;
             case 7 : Scan_Insert(); break;
@@ -33,7 +34,7 @@ public class CalFuntion extends SubFuntion{
         
         public void add() throws Exception {
 
-          System.out.print("일정입력(****.**.**)>>>");
+          System.out.print("일정입력(****-**-**)>>>");
           String dDate = sc.nextLine();
           if(dDate.equals("back")) {
             mainMenu();
@@ -44,7 +45,7 @@ public class CalFuntion extends SubFuntion{
       String contents = sc.nextLine();
       System.out.print("장소입력>>>");
       String location = sc.nextLine();
-      String[] dateArr = dDate.split("\\.");
+      String[] dateArr = dDate.split("-");
       int year = Integer.parseInt(dateArr[0]);
       int month = Integer.parseInt(dateArr[1]);
       int day = Integer.parseInt(dateArr[2]);
@@ -96,9 +97,9 @@ public class CalFuntion extends SubFuntion{
           String setcontents = sc.nextLine();
           System.out.print("장소 수정>>>");
           String setlocation = sc.nextLine();
-          System.out.print("일정 수정(****.**.**)>>>");
+          System.out.print("일정 수정(****-**-**)>>>");
           String setDate = sc.nextLine();
-          String[] dateArr = setDate.split("\\.");
+          String[] dateArr = setDate.split("-");
           int year = Integer.parseInt(dateArr[0]);
           int month = Integer.parseInt(dateArr[1]);
           int day = Integer.parseInt(dateArr[2]);
@@ -161,6 +162,9 @@ public class CalFuntion extends SubFuntion{
         }//single end
 
         public void dateView() {
+          int a;
+          String year, month, day;
+          year = year.replaceAll(System.getProperty("line.separator"), " ");
           
           try {
             loop : 
@@ -168,21 +172,29 @@ public class CalFuntion extends SubFuntion{
             System.out.println("일정 검색"); 
               while(true) {
                 System.out.println("연>>>");
-              int year = sc.nextInt();
-              int length = (int)(Math.log10(year)+1);
+              year = sc.nextLine();
+              if(year.equals(" ")) {
+                mainMenu();
+              }else { a = Integer.parseInt(year);
+              int length = (int)(Math.log10(a)+1);
               if(length != 4) {
                 System.out.print("오류!\t네 자릿수의 연도를 입력 하세요.");
                 } else {break;}
               }
+              }
               while(true) {
               System.out.println("월>>>");
-              int month = sc.nextInt();
-              int length = (int)(Math.log10(month)+1);
-              if(month < 1 && month >12 && length !=2) {
+              month = sc.nextLine();
+              if(month.equals("\n")) {
+                mainMenu();
+              }else { a = Integer.parseInt(month);
+              int length = (int)(Math.log10(a)+1);
+              if(length < 1 && length >12 && length !=2) {
                 System.out.print("오류!\t두 자릿수의 월을 입력 하세요.");
                 } else {
-                  String smonth = Integer.toString(month);
+//                  String smonth = Integer.toString(month);
                   break;}
+              }
               }
 //              while(true) {
 //                System.out.println("일>>>");
@@ -196,7 +208,7 @@ public class CalFuntion extends SubFuntion{
 //                System.out.print("오류!\t두 자릿수의 일을 입력 하세요.");
 //                } else {break;}
 //              }
-            msg = "select * from cal where Caldate = "+ "'"+ year +"-"+ smonth +"-"+  "'" ;
+            msg = "select * from cal where Caldate = "+ "'"+ year +"-"+ month +"-"+  "'" ;
             int OK = ST.executeUpdate(msg);
             if (OK==0) {
               System.out.println("데이터 조회 실패");
