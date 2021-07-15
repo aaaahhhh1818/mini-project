@@ -169,32 +169,38 @@ public class CalFuntion extends SubFuntion{
             loop : 
               while(true) {
             System.out.println("일정 검색"); 
-              while(true) {
+              loop3:while(true) {
                 System.out.println("연>>>");
               year = sc.nextLine();
-              if(year.equals(" ")) {
+              if(year.equals("") || year==null) {
+                System.out.println("오류!\t네 자릿수의 연도를 입력 하세요.");
+                continue loop3;
+              } if(year.equals("back")) {
                 mainMenu();
-              }else { a = Integer.parseInt(year);
+              } else { a = Integer.parseInt(year);
               int length = (int)(Math.log10(a)+1);
               if(length != 4) {
-                System.out.print("오류!\t네 자릿수의 연도를 입력 하세요.");
+                System.out.println("오류!\t네 자릿수의 연도를 입력 하세요.");
                 } else {break;}
               }
-              }
-              while(true) {
-              System.out.println("월>>>");
+              }//year while end
+              loop4:while(true) {
+                System.out.println("월>>>");
               month = sc.nextLine();
-              if(month.equals("\n")) {
+              if(month.equals("") || month==null) {
+                System.out.println("오류!\t두 자릿수의 월을 입력 하세요.");
+                continue loop4;
+              } if(month.equals("back")) {
                 mainMenu();
-              }else { a = Integer.parseInt(month);
-              int length = (int)(Math.log10(a)+1);
-              if(length < 1 && length >12 && length !=2) {
-                System.out.print("오류!\t두 자릿수의 월을 입력 하세요.");
-                } else {
-//                  String smonth = Integer.toString(month);
-                  break;}
+              } else { a = Integer.parseInt(month);
               }
-              }
+              if(a < 1 || a > 12 ) {
+                int length = (int)(Math.log10(a)+1);
+                if(length != 2) {
+                  System.out.println("오류!\t두 자릿수의 월을 입력 하세요.");
+                } 
+              } else {break;}
+              } //month while end
 //              while(true) {
 //                System.out.println("일>>>");
 //              day = sc.nextInt();
