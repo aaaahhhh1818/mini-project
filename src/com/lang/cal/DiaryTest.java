@@ -99,7 +99,7 @@ public class DiaryTest {
       if (OK>0){
         System.out.println(wdate+"코드 저장성공했습니다");
       }else{ System.out.println(wdate+"코드 저장실패했습니다");}
-    }catch (Exception e) {}
+    }catch (Exception e) {System.out.println(e + " -일기장 저장을 실패했습니다");}
   }//diaryInsert end
 
   public void diaryList () {
@@ -145,7 +145,7 @@ public class DiaryTest {
         System.out.println("오늘의 반성할 일 : " + wcomment);
         System.out.println("───────────────────────────────────────");
       }
-    }catch (Exception e) {System.out.println(e + " - 일기장 보기를 실패하였습니다");}
+    }catch (Exception e) {System.out.println(e + " -일기장 보기를 실패했습니다");}
 
   }//diaryList end
 
@@ -169,7 +169,7 @@ public class DiaryTest {
       }else { 
         System.out.println("'" + wdate + "의 일기장'이 존재하지 않습니다");
       }
-    }catch (Exception e) {System.out.println(e + " -일기장 삭제를 실패하였습니다");}
+    }catch (Exception e) {System.out.println(e + " -일기장 삭제를 실패했습니다");}
   }
 
   public void diaryUpdate() {
