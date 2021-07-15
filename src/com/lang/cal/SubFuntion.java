@@ -1,60 +1,23 @@
 package com.lang.cal;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Date;
-import java.util.Scanner;
 
-public class SubFuntion extends MainCalender{
-  
-  Scanner sc = new Scanner(System.in);
-  Connection CN = null;
-  Statement ST = null; 
-  ResultSet RS = null; 
-  PreparedStatement PST = null;
-  Date DT = new Date();
-  String msg = "isud = crud 쿼리문기술";
-  String input = "";
-  int total = 0;
-  int a;
-  String year, month, day;
-  
-  
-  public void connect() {
-    
-    try {
-    Class.forName("oracle.jdbc.driver.OracleDriver");
-    String url = "jdbc:oracle:thin:@localhost:1521:XE";
-    CN =  DriverManager.getConnection(url, "system", "1234");
-    System.out.println( DT + "드라이브 & 서버 연결성공");
-    
-    ST = CN.createStatement();
-    
-    msg = "select count(*) as hit from cal";
-    RS = ST.executeQuery(msg);
-    if(RS.next()==true)  {
-      total = RS.getInt("hit");
-    }
-    } catch (Exception ex) { System.out.println("에러이유 " + ex);
-    }
-  }//connect end
+public class SubFuntion extends Cal_connect {
   
   public void listIn() {
     try {
-      System.out.println("제 목\t내 용\t장 소\t날 짜\t");
+      System.out.println("번 호\t제 목\t내 용\t장 소\t날 짜\t");
       RS = ST.executeQuery(msg);
       while(RS.next()==true) {
-
+        
+        String unumber = RS.getString("calnumber");
         String ucode = RS.getString("Caltitle");
         String uname = RS.getString("Calcontents");
         String utitle = RS.getNString("Callocation");
         Date udate = RS.getDate("Caldate");
         
         System.out.println(
-            ucode + "\t" + uname + "\t" + utitle + "\t" + udate + "\t");
+            unumber + "\t" + ucode + "\t" + uname + "\t" + utitle + "\t" + udate + "\t");
       }
       
       } catch (Exception ex) { System.out.println("에러이유 " + ex);
@@ -130,6 +93,57 @@ public class SubFuntion extends MainCalender{
       System.out.println("오류!\t 1~31 일을 입력 하세요.");
     } else {break loopDay;}//3else end
     } //day while end
-  }
+  }//dateDay end
 
+  public void update() {
+    try {
+      System.out.print("수정할 번호 선택 : ");
+      String tempnum = sc.nextLine();
+      
+      if(tempnum.equals("취소") || tempnum==null 
+          || tempnum.equals("") || tempnum.equals(" ")) {
+        System.out.println("취소 후 메인 메뉴로 돌아가는중....");
+        Thread.sleep(1000);
+        new CalFuntion().mainMenu();
+      }
+      sc.nextLine();
+      msg = "select * from cal where Calnumber =" + tempnum ;
+      
+    System.out.print("제목 수정>>>");
+    String settitle = sc.nextLine();
+    System.out.print("내용 수정>>>");
+    String setcontents = sc.nextLine();
+    System.out.print("장소 수정>>>");
+    String setlocation = sc.nextLine();
+    System.out.println("일정 수정");
+    dateYear();
+    dateMonth();
+    dateDay();
+    
+    String setDate = year+"-"+month+"-"+day;
+    String[] dateArr = setDate.split("-");
+    int year = Integer.parseInt(dateArr[0]);
+    int month = Integer.parseInt(dateArr[1]);
+    int day = Integer.parseInt(dateArr[2]);
+    arr[year-1900][month][day-1] = settitle;
+    
+    msg = "update cal set "
+        + "Caltitle = '"+ settitle+"', "
+        + "Calcontents = '"+ setcontents +"', "
+        + "Callocation = '"+ setlocation +"', "
+        + "Caldate = TO_DATE('" + setDate + "','yyyy-MM-dd')"
+        +" where Calnumber = " + tempnum ;
+    
+    System.out.println(msg);
+    
+    int OK = ST.executeUpdate(msg);
+    if (OK>0) {
+      System.out.println("데이터 수정 성공");
+    } else {
+      System.out.println("데이터 수정 실패");
+    }
+    } catch (Exception ex) { System.out.println("에러이유 " + ex);
+    }//try C end
+  }//update end
+  
 }//C end

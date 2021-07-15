@@ -3,10 +3,11 @@ package com.lang.cal;
 public class Cal_Menu {
   CalFuntion cl = new CalFuntion();
   MainCalender MC = new MainCalender();
+  Cal_connect CC = new Cal_connect();
 
   void run() throws Exception {
     
-  cl.connect();
+//  CC.connect();
   cl.mainMenu();
   cl.add();
   cl.delete();
