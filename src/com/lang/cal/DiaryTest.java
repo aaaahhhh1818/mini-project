@@ -50,7 +50,7 @@ public class DiaryTest {
       System.out.println("│ 3. 일기장 수정");
       System.out.println("│ 4. 일기장 목록");
       System.out.println("│ 5. 일기장 보기");
-      System.out.println("│ 6. 일기장 종료");
+      System.out.println("│ q. 일기장 종료");
       System.out.println("└──────────────────");
       System.out.print("[선택] ");
       String sel = sc.nextLine();
@@ -60,7 +60,7 @@ public class DiaryTest {
         case "3" : diaryUpdate(); break;
         case "4" : diaryList(); break;
         case "5" : diaryView(); break;
-        case "6" :
+        case "q" :
           System.out.println("일기장 종료");
           break loop;
         default :
@@ -99,7 +99,7 @@ public class DiaryTest {
       if (OK>0){
         System.out.println(wdate+"코드 저장성공했습니다");
       }else{ System.out.println(wdate+"코드 저장실패했습니다");}
-    }catch (Exception e) {}
+    }catch (Exception e) {System.out.println(e + " -일기장 저장을 실패했습니다");}
   }//diaryInsert end
 
   public void diaryList () {
@@ -145,7 +145,7 @@ public class DiaryTest {
         System.out.println("오늘의 반성할 일 : " + wcomment);
         System.out.println("───────────────────────────────────────");
       }
-    }catch (Exception e) {System.out.println(e + " - 일기장 보기를 실패하였습니다");}
+    }catch (Exception e) {System.out.println(e + " -일기장 보기를 실패했습니다");}
 
   }//diaryList end
 
@@ -169,7 +169,7 @@ public class DiaryTest {
       }else { 
         System.out.println("'" + wdate + "의 일기장'이 존재하지 않습니다");
       }
-    }catch (Exception e) {System.out.println(e + " -일기장 삭제를 실패하였습니다");}
+    }catch (Exception e) {System.out.println(e + " -일기장 삭제를 실패했습니다");}
   }
 
   public void diaryUpdate() {
