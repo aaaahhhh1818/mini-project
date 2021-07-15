@@ -50,7 +50,7 @@ public class DiaryTest {
       System.out.println("│ 3. 일기장 수정");
       System.out.println("│ 4. 일기장 목록");
       System.out.println("│ 5. 일기장 보기");
-      System.out.println("│ 6. 일기장 종료");
+      System.out.println("│ q. 일기장 종료");
       System.out.println("└──────────────────");
       System.out.print("[선택] ");
       String sel = sc.nextLine();
@@ -60,7 +60,7 @@ public class DiaryTest {
         case "3" : diaryUpdate(); break;
         case "4" : diaryList(); break;
         case "5" : diaryView(); break;
-        case "6" :
+        case "q" :
           System.out.println("일기장 종료");
           break loop;
         default :

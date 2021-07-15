@@ -17,7 +17,7 @@ public class MainCal {
       System.out.println("│ 1. 일정 등록");
       System.out.println("│ 2. 일기 등록");
       System.out.println("│ 3. 달력 보기");
-      System.out.println("│ 4. 종료     ");
+      System.out.println("│ q. 종료     ");
       System.out.println("└────────────────");
       System.out.print("[선택] ");
       String menuNo = sc.nextLine();
@@ -28,7 +28,7 @@ public class MainCal {
         case "2": DiaryTest.main(args);
         break;
         case "3": MC.Scan_Insert(); break;
-        case "4": break menuLoop;
+        case "q": break menuLoop;
         default:
           System.out.println("\n메뉴 번호가 옳지 않습니다.\n다시 선택해주세요.");
       }
