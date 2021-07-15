@@ -6,10 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/hhwanseung/Mtest/ojdbc6.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/이아현/git/bitcamp-study/Mtest/ojdbc6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

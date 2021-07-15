@@ -26,20 +26,21 @@ public class Diary {
   public void diaryConnect() {
 
     try {   
-//      Class.forName("oracle.jdbc.driver.OracleDriver");
-//      String url = "jdbc:oracle:thin:@localhost:1521:XE";
-//      CN =  DriverManager.getConnection(url, "system", "1234");
-//      ST = CN.createStatement();
-            Class.forName("oracle.jdbc.driver.OracleDriver"); //오라클드라이브로드
-            String url = "jdbc:oracle:thin:@175.210.92.176:1521:XE" ;
-            CN=DriverManager.getConnection(url,"hhwanseung","1234");
-            System.out.println("오라클 드라이브및 서버연결성공 ");
-            ST = CN.createStatement();
+      Class.forName("oracle.jdbc.driver.OracleDriver");
+      String url = "jdbc:oracle:thin:@localhost:1521:XE";
+      CN =  DriverManager.getConnection(url, "system", "1234");
+      ST = CN.createStatement();
+      //            Class.forName("oracle.jdbc.driver.OracleDriver"); //오라클드라이브로드
+      //            String url = "jdbc:oracle:thin:@175.210.92.176:1521:XE" ;
+      //            CN=DriverManager.getConnection(url,"hhwanseung","1234");
+      //            System.out.println("오라클 드라이브및 서버연결성공 ");
+      //            ST = CN.createStatement();
 
     }catch (Exception e) { }
   }//diaryConnect end
 
   public void diaryMenu() {
+    diaryConnect();
 
 
     loop: while(true) {
@@ -64,7 +65,7 @@ public class Diary {
           System.out.println("일기장 종료");
           break loop;
         default :
-          System.out.println("잘못된 입력입니다.");
+          System.out.println("\n-잘못된 입력입니다. 다시 입력해주세요.");
           break;
       }//switch end
     }//while end
@@ -97,8 +98,8 @@ public class Diary {
       //4번째 서버에서 실행 executeUpdate("insert ~~")
       int OK = PST.executeUpdate();
       if (OK>0){
-        System.out.println(wdate+"코드 저장성공했습니다");
-      }else{ System.out.println(wdate+"코드 저장실패했습니다");}
+        System.out.println("'" + wdate + "의 일기장' 저장 성공");
+      }else{ System.out.println("'" + wdate + "의 일기장' 저장 실패");}
     }catch (Exception e) {System.out.println(e + " -일기장 저장을 실패했습니다");}
   }//diaryInsert end
 
@@ -212,6 +213,14 @@ public class Diary {
           default :
             System.out.println("잘못된 입력입니다"); break;
         }//switch end
+
+        System.out.print("\n'" + wdate +"의 일기장'을 정말로 수정하시겠습니까? 1.YES/2.NO > ");
+        int check = Integer.parseInt(sc.nextLine());
+        if (check != 1) {
+          System.out.println("수정을 취소하였습니다");
+          return;
+        }
+
         int OK = ST.executeUpdate(msg);
         if ( OK > 0 ) {
           System.out.println("'" + wdate + "의 일기장' 수정 완료"); break;
@@ -225,10 +234,6 @@ public class Diary {
   }//diaryUpdate end
 
 
-  public static void main(String[] args) {
-    DiaryTest dt = new DiaryTest();
-    dt.diaryConnect();
-    dt.diaryMenu();
-  }//main end
+
 
 }//Class end

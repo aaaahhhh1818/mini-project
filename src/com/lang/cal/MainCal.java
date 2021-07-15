@@ -7,10 +7,7 @@ public class MainCal {
 
   static Scanner sc = new Scanner(System.in);
 
-  public static void main(String[] args) {
-    //MainCal cal = new MainCal();
-    MainCalender MC = new MainCalender();
-    Cal cal = new Cal();
+  public static void main(String[] args) throws Exception {
 
     menuLoop: while (true) {
       System.out.println("\n┌────────────────");  
@@ -23,9 +20,9 @@ public class MainCal {
       String menuNo = sc.nextLine();
 
       switch (menuNo) {
-        case "1": cal.connect(); break;
-        case "2": DiaryTest.main(args); break;
-        case "3": MC.Scan_Insert(); break;
+        case "1": new Cal_Menu().run(); break;
+        case "2": new Diary_Menu().run(); break;
+        case "3":  break;
         case "q": break menuLoop;
         default:
           System.out.println("\n메뉴 번호가 옳지 않습니다.\n다시 선택해주세요.");
