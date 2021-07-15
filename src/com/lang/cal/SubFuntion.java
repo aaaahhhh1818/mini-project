@@ -61,14 +61,17 @@ public class SubFuntion extends MainCalender{
       }//try C end
   }//listIn end
   
-  public void dateYear() {
-    loop3:while(true) {
+  public void dateYear() throws Exception {
+    
+    loopYear:while(true) {
       System.out.println("연>>>");
     year = sc.nextLine();
     if(year.equals("") || year==null) {
       System.out.println("오류!\t네 자릿수의 연도를 입력 하세요.");
-      continue loop3;
-    } if(year.equals("back")) {
+      continue loopYear;
+    } if(year.equals("취소")) {
+      System.out.println("취소 후 메인 메뉴로 돌아가는중....");
+      Thread.sleep(1000);
       new CalFuntion().mainMenu();
     } else { a = Integer.parseInt(year);
     int length = (int)(Math.log10(a)+1);
@@ -79,48 +82,53 @@ public class SubFuntion extends MainCalender{
     }//year while end
   }//dateYear end
   
-  public void dateMonth() {
+  public void dateMonth() throws Exception {
   
-  loop4:while(true) {
+  loopMonth:while(true) {
     System.out.println("월>>>");
   month = sc.nextLine();
   if(month.equals("") || month==null) {
     System.out.println("오류!\t이 칸은 비울수 없습니다.");
-    continue loop4;
-  } if(month.equals("back")) {
+    continue loopMonth;
+  } if(month.equals("취소")) {
+    System.out.println("취소 후 메인 메뉴로 돌아가는중....");
+    Thread.sleep(1000);
     new CalFuntion().mainMenu();
   } else {
     if(month.length()!=2) {
       System.out.println("오류!\t두 자릿수로 월을 입력 하세요.");
-      continue loop4;
+      continue loopMonth;
     } else { 
       a = Integer.parseInt(month);}//2else end
   }//1else end
   if(a < 1 || a > 12 ) {
     System.out.println("오류!\t 1~12 월을 입력 하세요.");
-  } else {break loop4;}//3else end
+  } else {break loopMonth;}//3else end
   } //month while end
 }//dateMonth end
   
-  public void dateDay() {
-    loop6:while(true) {
+  public void dateDay() throws Exception {
+    
+    loopDay:while(true) {
       System.out.println("일>>>");
     day = sc.nextLine();
     if(day.equals("") || day==null) {
       System.out.println("오류!\t이 칸은 비울수 없습니다.");
-      continue loop6;
-    } if(day.equals("back")) {
+      continue loopDay;
+    } if(day.equals("취소")) {
+      System.out.println("취소 후 메인 메뉴로 돌아가는중....");
+      Thread.sleep(1000);
       new CalFuntion().mainMenu();
     } else {
       if(day.length()!=2) {
         System.out.println("오류!\t두 자릿수로 일을 입력 하세요.");
-        continue loop6;
+        continue loopDay;
       } else { 
         a = Integer.parseInt(day);}//2else end
     }//1else end
     if(a < 1 || a > 31 ) {
       System.out.println("오류!\t 1~31 일을 입력 하세요.");
-    } else {break loop6;}//3else end
+    } else {break loopDay;}//3else end
     } //day while end
   }
 
