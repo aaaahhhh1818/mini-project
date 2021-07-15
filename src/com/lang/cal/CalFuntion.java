@@ -184,6 +184,7 @@ public class CalFuntion extends SubFuntion{
                 } else {break;}
               }
               }//year while end
+              
               loop4:while(true) {
                 System.out.println("월>>>");
               month = sc.nextLine();
@@ -192,28 +193,39 @@ public class CalFuntion extends SubFuntion{
                 continue loop4;
               } if(month.equals("back")) {
                 mainMenu();
-              } else { a = Integer.parseInt(month);
-              }
-              if(a < 1 || a > 12 ) {
+              } else {a = Integer.parseInt(month);
+              if(a > 0 && a < 13 ) {
                 int length = (int)(Math.log10(a)+1);
                 if(length != 2) {
                   System.out.println("오류!\t두 자릿수의 월을 입력 하세요.");
                 } 
-              } else {break;}
+                } else {
+                  System.out.println("오류!\t 1~12 월을 입력 하세요.");
+                  break loop4;}
+              }
               } //month while end
-//              while(true) {
-//                System.out.println("일>>>");
-//              day = sc.nextInt();
-//              if(day.equals("back")) {
-//                mainMenu();
-//              } else { a = Integer.parseInt(day);
-//              }
-//              int length = (int)(Math.log10(a)+1);
-//              if(length != 2) {
-//                System.out.print("오류!\t두 자릿수의 일을 입력 하세요.");
-//                } else {break;}
-//              }
-            msg = "select * from cal where Caldate = "+ "'"+ year +"-"+ month +"-"+  "'" ;
+              
+              loop6:while(true) {
+                System.out.println("일>>>");
+              day = sc.nextLine();
+              if(day.equals("") || day==null) {
+                System.out.println("오류!\t두 자릿수의 일을 입력 하세요.");
+                continue loop6;
+              } if(day.equals("back")) {
+                mainMenu();
+              } else {continue;}
+              
+              a = Integer.parseInt(day);
+              
+              if(a > 0 && a < 32 ) {
+                int length = (int)(Math.log10(a)+1);
+                if(length != 2) {
+                  System.out.println("오류!\t두 자릿수의 일을 입력 하세요.");
+                }
+              } else {break;}
+              } //day while end
+              
+            msg = "select * from cal where Caldate = "+ "'"+ year +"-"+ month +"-"+ day + "'" ;
             int OK = ST.executeUpdate(msg);
             if (OK==0) {
               System.out.println("데이터 조회 실패");
