@@ -4,10 +4,12 @@ package com.lang.cal;
 public class CalFuntion extends MainCalender {
 
   public void mainMenu() {
+    MainCal MC = new MainCal();
+
     connect();
     try {
       int sel = 0;
-      exit: while(true) {
+      while(true) {
         System.out.println("\n[일정 메뉴]");
         System.out.println("┌───────────────────┐");  
         System.out.println("   1. 일정 입력");
@@ -31,9 +33,7 @@ public class CalFuntion extends MainCalender {
           case 4 : allList(); break;
           case 5 : singleView(); break;
           case 6 : Scan_Insert(); break;
-          case 0 : 
-            System.out.println();
-            break exit;
+          case 0 : MC.mainMenu(); break;
           default : System.out.println("메뉴를 다시 입력해주세요");
           break;
         }//switch end
