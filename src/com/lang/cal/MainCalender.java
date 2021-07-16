@@ -1,6 +1,6 @@
 package com.lang.cal;
 
-public class MainCalender extends CalFuntion{
+public class MainCalender extends SubFuntion{
 
   static char[] weeks = {'일', '월', '화', '수', '목', '금', '토'};
   static int [][] days = {{ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, // 평년
@@ -49,12 +49,15 @@ public class MainCalender extends CalFuntion{
     }
 
     for(int i = 1; i<= lastday; i++) {
-      if(arr[year-1900][month][i-1] == null) {
-        System.out.printf("%2d \t", i);
-      } else {System.out.printf("%2d ●\t", i);}
+      msg = "select caldate from cal where caldate = "+ "'"+ year +"-"+ month +"-"+ i + "'" ;
+      RS = ST.executeQuery(msg);
+      if(RS.next()==true) {
+        System.out.printf("%2d ●\t", i);
+      } else {System.out.printf("%2d \t", i);}
       if((Firstweek + i -1) % 7 == 6)
         System.out.println();
     }//달력구현
+    
     System.out.println("\n─────────────────────────────────────────────────────");
 
 
@@ -73,7 +76,7 @@ public class MainCalender extends CalFuntion{
             } if(day.equals("취소")) {
               System.out.println("취소 후 메인 메뉴로 돌아가는중....");
               Thread.sleep(1000);
-              mainMenu();
+              new CalFuntion().mainMenu();
             } else {
               if(day.length()!=2) {
                 System.out.println("오류!\t두 자릿수로 일을 입력 하세요.");

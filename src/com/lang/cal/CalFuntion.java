@@ -1,7 +1,7 @@
 package com.lang.cal;
 
 
-public class CalFuntion extends SubFuntion {
+public class CalFuntion extends MainCalender {
 
   public void mainMenu() {
     connect();
@@ -30,7 +30,7 @@ public class CalFuntion extends SubFuntion {
           case 3 : dateView(); break;
           case 4 : allList(); break;
           case 5 : singleView(); break;
-          case 6 : new MainCalender().Scan_Insert(); break;
+          case 6 : Scan_Insert(); break;
           case 0 : 
             System.out.println();
             break exit;
