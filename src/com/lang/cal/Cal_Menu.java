@@ -6,15 +6,15 @@ public class Cal_Menu {
   Cal_connect CC = new Cal_connect();
 
   void run() throws Exception {
-    
-//  CC.connect();
-  cl.mainMenu();
-  cl.add();
-  cl.delete();
-  cl.allList();
-  cl.singleView();
-  
-  MC.Scan_Insert();
-  
+
+    //  CC.connect();
+    cl.mainMenu();
+    //  cl.add();
+    //  cl.delete();
+    //  cl.allList();
+    //  cl.singleView();
+
+    //  MC.Scan_Insert();
+
   }
 }

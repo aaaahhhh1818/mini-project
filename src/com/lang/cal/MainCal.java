@@ -9,24 +9,24 @@ public class MainCal {
   public static void main(String[] args) throws Exception {
 
     menuLoop: while (true) {
-      System.out.println("\n┌────────────────");  
-      System.out.println("│ 1. 일정 관리");
-      System.out.println("│ 2. 일기 관리");
-      System.out.println("│ 3. 달력 보기");
-      System.out.println("│ q. 종료     ");
-      System.out.println("└────────────────");
-      System.out.print("[선택] ");
+      System.out.println("\n[다이어리 메뉴]");
+      System.out.println("┌─────────────────┐");  
+      System.out.println("   1. 일정 관리");
+      System.out.println("   2. 일기 관리");
+      System.out.println("   q. 종료     ");
+      System.out.println("└─────────────────┘");
+      System.out.print("> ");
       String menuNo = sc.nextLine();
 
       switch (menuNo) {
         case "1": new Cal_Menu().run(); break;
         case "2": new Diary_Menu().run(); break;
-        case "3":  break;
-        case "q": break menuLoop;
+        case "q": 
+          System.out.println("다이어리 프로그램 종료");
+          break menuLoop;
         default:
-          System.out.println("\n메뉴 번호가 옳지 않습니다.다시 선택해주세요.");
+          System.out.println("\n-메뉴 번호가 옳지 않습니다");
       }
-      System.out.println();
     }
   }
 }
