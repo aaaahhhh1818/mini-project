@@ -117,13 +117,28 @@ public class MainCalender extends SubFuntion{
     connect();
     int year = 0;
     int month = 0;
-
+    
+    loopyear:while(true) {
     System.out.println();
     System.out.print("년도를 입력해주세요 : "); //1900년도 이후
-    year = sc.nextInt();
-    sc.nextLine();
+    String Syear = sc.nextLine();
+    if(Syear.equals("") || Syear==null) {
+      System.out.println("오류!\t이 칸은 비울수 없습니다.");
+      continue loopyear;
+    } if(Syear.equals("취소")) {
+      System.out.println("취소 후 메뉴로 돌아가는중....");
+      Thread.sleep(1000);
+      new CalFuntion().mainMenu();
+    } else {
+      if(Syear.length()!=4) {
+        System.out.println("오류!\t네 자릿수로 년을 입력 하세요.");
+        continue loopyear;
+      } else { 
+        year = Integer.parseInt(Syear);}//2else end
+    }//1else end
     if(year < 1900) {
       Scan_ERROR();
+    } break loopyear;
     }
 
     loopMonth:while(true) {
